@@ -7,7 +7,9 @@ const port = process.env.PORT || 3000;
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING;
 
 const app = express();
+app.use(express.json());
 app.use("/api", router);
+
 mongoose.connect(CONNECTION_STRING).then(() => {
   app.listen(port, () => {
     console.log(`App run on ${port}`);
